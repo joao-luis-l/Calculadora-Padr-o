@@ -1,11 +1,17 @@
     let display = document.getElementById("display");
     let numeroTela = "";
-    let operadorTela = "";
     let contadorParenteses = 0; 
+    let novoCalculo = false;
 
     const telaMax = 15; 
 
     function appendNumber(value){
+
+        if (novoCalculo) {
+
+            numeroTela = "";
+            novoCalculo = false;
+        }
 
         if (numeroTela.length >= telaMax) return;
 
@@ -17,12 +23,23 @@
 
     function appendOperator(operator){
 
+        if (novoCalculo) {
+
+            novoCalculo = false;
+        }   
+
         if(numeroTela === "" && operator !== "-") return
 
         const ultSinal = numeroTela.slice(-1);
 
-        if (["+", "*", "/"].includes(ultSinal)) return;
+         if (["+", "-", "*", "/", "%", "."].includes(ultSinal)) {
+        numeroTela = numeroTela.slice(0, -1); 
+    }
 
+
+         if (operator === "%" && !/[0-9)]$/.test(ultSinal));
+
+    
     numeroTela += operator;
     updateDisplay();
 
@@ -37,18 +54,30 @@
         }
 
         try {
-            let result = eval(numeroTela)
+
+            let temp = numeroTela.replace(/[\+\-\*\/\.]$/, "");
+
+            let expressao = temp.replace(/(\d+(\.\d+)?)%/g, "($1/100)");
+
+            //  \d = qualquer digito de 0 a 9  (regex)
+            // g = global 
+
+            expressao = expressao.replace(/\)(\d)/g, ")*$1");
+
+            let result = eval(expressao)
             if(!Number.isInteger(result)){
 
-                result = result.toFixed(2)
+                result = result.toFixed(3)
             }
-            numeroTela = result;
-    updateDisplay();
+             numeroTela = result.toString();
+             updateDisplay();
+
+             novoCalculo = true;
 
 
             } catch(error) {
 
-                display.numeroTela = "pode nao man";
+                display.textContent = "pode nao man";
                 numeroTela = "";
 
         }
@@ -63,19 +92,15 @@
 
     }
 
-
-
-
-
     function appendParenteses() {
 
         const ultCarac = numeroTela.slice(-1);
-        if (numeroTela === "" || ["+", "*", "/", "("].includes(ultCarac)) {
+        if (numeroTela === "" || ["+", "-", "*", "/", "("].includes(ultCarac)) {
             numeroTela += "(";
             contadorParenteses++;
         } 
         
-        else if (contadorParenteses > 0 && (/[0-9)]/.test(ultCarac))) {
+        else if (contadorParenteses > 0 && (/[0-9)%]/.test(ultCarac))) {
             numeroTela += ")";
             contadorParenteses--;
         }
@@ -113,11 +138,6 @@
 }
 
 
-//nota 1  substituir resultado ao clicar em algum numero e dar continuidade às operações
-
-//nota 2 n deixar % se repetir!
-
-// corrigir bugs no geral 
 
 
 
