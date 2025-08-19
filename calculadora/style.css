@@ -6,7 +6,7 @@ justify-content: center;
 align-items: center;
 margin: 0;
 align-items: center;
-background: linear-gradient(gray, black);
+background: linear-gradient(rgba(113, 192, 159, 1), rgba(39, 67, 75, 1));
 
 }
 
@@ -91,7 +91,7 @@ background: linear-gradient(gray, black);
 .button.yellow {
 
     background-color: transparent;
-    color: rgba(231, 215, 74, 1);
+    color: white;
     width: 16;
     height: 40;
     opacity: 1;
@@ -102,7 +102,7 @@ background: linear-gradient(gray, black);
     line-height: 40px;
     letter-spacing: 0%;
     border-radius: 0;
-    border-left: 0.5px solid rgba(231, 215, 74, 1)
+    border-left: 0.5px solid rgba(112, 190, 157, 1);   
 
 
 }
@@ -110,9 +110,10 @@ background: linear-gradient(gray, black);
 
 .button.white.igual {
 
-    background: rgba(231, 215, 74, 1);
+    background: rgba(112, 190, 157, 1);
+
     color:rgba(255, 255, 255, 1);
-    height: 80;
+    height: 80; 
     opacity: 1;
     font-family: RobotoCondensed;
     font-weight: 500;
@@ -125,12 +126,12 @@ background: linear-gradient(gray, black);
 
 .button.white.topo {
 
-    border-top: 0.5px solid rgba(231, 215, 74, 1)
+    border-top: 0.5px solid rgba(112, 190, 157, 1);
 }
 
 
 .button.yellow.topo {
 
-    border-top: 0.5px solid rgba(231, 215, 74, 1)
+    border-top: 0.5px solid rgba(112, 190, 157, 1);
 }
 
