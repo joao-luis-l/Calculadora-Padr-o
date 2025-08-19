@@ -113,10 +113,11 @@
 }
 
 
-//nota 1  limpar display ao clicar = e numero, ou  adicionar operação!
+//nota 1  substituir resultado ao clicar em algum numero e dar continuidade às operações
 
 //nota 2 n deixar % se repetir!
 
 // corrigir bugs no geral 
+
 
 
