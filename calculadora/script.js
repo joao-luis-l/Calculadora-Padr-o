@@ -67,7 +67,7 @@
             let result = eval(expressao)
             if(!Number.isInteger(result)){
 
-                result = result.toFixed(3)
+                result = result.toFixed(2)
             }
              numeroTela = result.toString();
              updateDisplay();
@@ -136,6 +136,7 @@
     numeroTela = numeroTela.slice(0, -1);
     updateDisplay();
 }
+
 
 
 
